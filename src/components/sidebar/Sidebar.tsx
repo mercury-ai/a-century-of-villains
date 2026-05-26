@@ -12,6 +12,7 @@ interface SidebarProps {
   categoryColors: Record<string, string>;
   categoryStats: CategoryStats | null;
   selectedDecade: number | null;
+  visible: boolean;
   onSelectDecade: (i: number) => void;
 }
 
@@ -23,10 +24,15 @@ export function Sidebar({
   categoryColors,
   categoryStats,
   selectedDecade,
+  visible,
   onSelectDecade
 }: SidebarProps) {
   return (
-    <div className="lg:col-span-3" id="panel" onClick={(e) => e.stopPropagation()}>
+    <div
+      className={`lg:col-span-3 transition-opacity duration-150 ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+      id="panel"
+      onClick={(e) => e.stopPropagation()}
+    >
       <div
         className="bg-[#0b0e14]/55 border border-zinc-900 rounded-xl p-3 sm:p-4 shadow-xl h-full flex flex-col justify-between relative overflow-hidden backdrop-blur-sm"
         id="pi"

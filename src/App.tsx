@@ -43,7 +43,10 @@ export default function App() {
   const visualBands = useVisualBands(mode, cols, height, animProgress);
   const systemBands = useSystemBands(mode, cols, height, animProgress);
 
-  // Active decade resolution
+  // Sidebar visibility — only show when a decade is hovered/selected or an archetype is isolated
+  const showSidebar = hoveredDecade !== null || selectedDecade !== null || activeArch !== null;
+
+  // Active decade resolution (defaults to 9 only as a safe fallback for when sidebar IS shown)
   const activeDecadeIndex = hoveredDecade !== null ? hoveredDecade : (selectedDecade !== null ? selectedDecade : 9);
   const activeDecadeData = RAW[activeDecadeIndex];
 
@@ -100,7 +103,7 @@ export default function App() {
       </div>
 
       <main className="max-w-[96%] mx-auto px-2 mt-2" id="main">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+        <div className="grid lg:grid-cols-12 gap-4 items-stretch">
           <div className="lg:col-span-9 flex flex-col justify-between" id="chart-area">
             {showAccessibleTable ? (
               <AccessibleTable
@@ -173,6 +176,7 @@ export default function App() {
             categoryColors={categoryColors}
             categoryStats={categoryStats}
             selectedDecade={selectedDecade}
+            visible={showSidebar}
             onSelectDecade={handleSelectDecade}
           />
         </div>
