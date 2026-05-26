@@ -1,0 +1,6 @@
+{
+  "name": "A Century of Villains",
+  "description": "An interactive historical visualization of Indian cinema villain archetypes, adjusted for high-contrast accessibility and mobile design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
