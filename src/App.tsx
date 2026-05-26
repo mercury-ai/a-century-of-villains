@@ -103,8 +103,8 @@ export default function App() {
       </div>
 
       <main className="max-w-[96%] mx-auto px-2 mt-2" id="main">
-        <div className="grid lg:grid-cols-12 gap-4 items-stretch">
-          <div className="lg:col-span-9 flex flex-col justify-between" id="chart-area">
+        <div className="flex items-stretch">
+          <div className="flex-1 min-w-0 flex flex-col justify-between" id="chart-area">
             {showAccessibleTable ? (
               <AccessibleTable
                 mode={mode}
@@ -168,17 +168,31 @@ export default function App() {
             />
           </div>
 
-          <Sidebar
-            activeArch={activeArch}
-            activeDecadeData={activeDecadeData}
-            mode={mode}
-            categoryLabels={categoryLabels}
-            categoryColors={categoryColors}
-            categoryStats={categoryStats}
-            selectedDecade={selectedDecade}
-            visible={showSidebar}
-            onSelectDecade={handleSelectDecade}
-          />
+          {/* Sidebar wrapper — always in DOM; width collapses to 0 when hidden */}
+          <div
+            className="flex-shrink-0 overflow-hidden"
+            style={{
+              width: showSidebar ? "25%" : "0",
+              opacity: showSidebar ? 1 : 0,
+              pointerEvents: showSidebar ? "auto" : "none",
+              transition: "width 0.22s ease, opacity 0.18s ease",
+            }}
+          >
+            {/* Inner div keeps a stable width so content doesn't squish during the transition */}
+            <div className="pl-4 h-full" style={{ width: "clamp(200px, 25vw, 360px)" }}>
+              <Sidebar
+                activeArch={activeArch}
+                activeDecadeData={activeDecadeData}
+                mode={mode}
+                categoryLabels={categoryLabels}
+                categoryColors={categoryColors}
+                categoryStats={categoryStats}
+                selectedDecade={selectedDecade}
+                visible={showSidebar}
+                onSelectDecade={handleSelectDecade}
+              />
+            </div>
+          </div>
         </div>
       </main>
 
