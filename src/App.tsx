@@ -40,7 +40,7 @@ export default function App() {
   const [chartAreaRef, chartAreaWidth] = useContainerWidth();
   const [containerRef, width] = useContainerWidth();
   const animProgress = useEntryAnimation();
-  const height = useMemo(() => Math.max(Math.round(chartAreaWidth * 0.55), 460), [chartAreaWidth]);
+  const height = useMemo(() => Math.max(Math.round(chartAreaWidth * 0.42), 360), [chartAreaWidth]);
   const innerH = height - PAD_T - PAD_B;
   const baseLine = PAD_T + innerH;
 
