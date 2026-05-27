@@ -103,8 +103,17 @@ export default function App() {
       </div>
 
       <main className="max-w-[96%] mx-auto px-2 mt-2" id="main">
-        <div className="flex items-stretch">
-          <div className="flex-1 min-w-0 flex flex-col justify-between" id="chart-area">
+        {/* chart-area: stable container — never resizes when sidebar opens, so mouseleave is reliable */}
+        <div
+          id="chart-area"
+          className="relative"
+          onMouseLeave={() => setHoveredDecade(null)}
+        >
+          {/* Padded inner: SVG + legend shrink to make room when sidebar opens */}
+          <div
+            className="flex flex-col justify-between transition-[padding] duration-200 ease-out"
+            style={{ paddingRight: showSidebar ? "clamp(216px, calc(25vw + 16px), 376px)" : "0" }}
+          >
             {showAccessibleTable ? (
               <AccessibleTable
                 mode={mode}
@@ -168,18 +177,17 @@ export default function App() {
             />
           </div>
 
-          {/* Sidebar wrapper — always in DOM; width collapses to 0 when hidden */}
+          {/* Sidebar overlay — absolute child of chart-area, doesn't affect layout */}
           <div
-            className="flex-shrink-0 overflow-hidden"
+            className="absolute right-0 top-0 bottom-0 overflow-hidden"
             style={{
-              width: showSidebar ? "25%" : "0",
+              width: showSidebar ? "clamp(200px, 25vw, 360px)" : "0",
               opacity: showSidebar ? 1 : 0,
               pointerEvents: showSidebar ? "auto" : "none",
               transition: "width 0.22s ease, opacity 0.18s ease",
             }}
           >
-            {/* Inner div keeps a stable width so content doesn't squish during the transition */}
-            <div className="pl-4 h-full" style={{ width: "clamp(200px, 25vw, 360px)" }}>
+            <div className="h-full pl-4" style={{ width: "clamp(200px, 25vw, 360px)" }}>
               <Sidebar
                 activeArch={activeArch}
                 activeDecadeData={activeDecadeData}
