@@ -54,7 +54,7 @@ export function useVisualBands(
     // the botfade gradient overlay.
     const innerH = height - PAD_T - PAD_B;
     const centreY = PAD_T + innerH * 0.22;
-    const yscale = maxExt > 0 ? (height * 0.44 * animProgress) / maxExt : 1;
+    const yscale = maxExt > 0 ? (height * 0.54 * animProgress) / maxExt : 1;
 
     const xs = cols.map(c => c.cx);
 
