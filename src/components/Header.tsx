@@ -10,7 +10,7 @@ interface HeaderProps {
 
 export function Header({ mode, onModeChange, showAccessibleTable, onToggleTable }: HeaderProps) {
   const modeBtnClass = (active: boolean) =>
-    `px-2.5 py-1.5 text-[10px] font-semibold tracking-wide uppercase rounded-md transition-all duration-200 cursor-pointer ${
+    `px-2.5 py-1.5 text-[12px] font-semibold tracking-wide uppercase rounded-md transition-all duration-200 cursor-pointer ${
       active
         ? "bg-amber-500 text-zinc-950 shadow-md transform scale-102"
         : "text-zinc-400 hover:text-white hover:bg-zinc-800"
@@ -34,7 +34,7 @@ export function Header({ mode, onModeChange, showAccessibleTable, onToggleTable 
             >
               A CENTURY OF VILLAINS
             </h1>
-            <p className="text-zinc-400 text-[11px] max-w-2xl mt-1 leading-snug" id="tagline">
+            <p className="text-zinc-400 text-[13px] max-w-2xl mt-1 leading-snug" id="tagline">
               Historical trends in villain archetypes. Column widths reflect decadal production; stream flow shows relative archetype density. Tap eras or categories to isolate trends.
             </p>
           </div>
@@ -69,7 +69,7 @@ export function Header({ mode, onModeChange, showAccessibleTable, onToggleTable 
 
             <button
               onClick={onToggleTable}
-              className={`px-2.5 py-1.5 rounded-lg border transition-all inline-flex items-center gap-1.5 text-[11px] font-semibold cursor-pointer ${
+              className={`px-2.5 py-1.5 rounded-lg border transition-all inline-flex items-center gap-1.5 text-[12px] font-semibold cursor-pointer ${
                 showAccessibleTable
                   ? "bg-zinc-100 text-zinc-950 border-white shadow-md"
                   : "bg-zinc-900 text-zinc-300 border-zinc-800 hover:bg-zinc-800 hover:text-white"

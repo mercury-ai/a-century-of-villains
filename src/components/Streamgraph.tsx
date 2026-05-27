@@ -305,7 +305,7 @@ export function Streamgraph({
                   y={baseLine + 22}
                   textAnchor="middle"
                   fill={isSelected ? "#fbbf24" : isHovered ? "#fbbf24" : "#cbd5e1"}
-                  fontSize="12.5"
+                  fontSize="14"
                   fontWeight="bold"
                   className="transition-all duration-150 select-none font-sans cursor-pointer"
                   style={{ textDecoration: "none" }}

@@ -17,19 +17,19 @@ export function DecadeFocus({
 }: DecadeFocusProps) {
   return (
     <div>
-      <span className="text-[10px] font-bold tracking-[2px] uppercase text-amber-500 block mb-0.5" id="p-era">
+      <span className="text-[12px] font-bold tracking-[2px] uppercase text-amber-500 block mb-0.5" id="p-era">
         Era Analysis
       </span>
 
       <h2 className="font-bebas text-4xl sm:text-5xl tracking-wide text-white leading-none mb-2 border-b border-zinc-900 pb-1 flex items-baseline justify-between" id="p-dec">
         <span>{activeDecadeData.decade}</span>
-        <span className="text-[10px] font-sans font-medium text-zinc-500 block text-right tracking-normal uppercase">
+        <span className="text-[12px] font-sans font-medium text-zinc-500 block text-right tracking-normal uppercase">
           n = {activeDecadeData.sample} Classified
         </span>
       </h2>
 
       <div className="mb-2.5 flex items-center justify-between gap-2 border-b border-zinc-900 pb-1.5">
-        <span className="text-[9px] uppercase font-bold tracking-[1.5px] text-zinc-500">
+        <span className="text-[11px] uppercase font-bold tracking-[1.5px] text-zinc-500">
           Dominant Paradigm
         </span>
         <h3 className="font-bebas text-[15px] tracking-[0.5px] uppercase truncate" id="p-archname">
@@ -46,14 +46,14 @@ export function DecadeFocus({
       </div>
 
       <div id="p-rows" className="space-y-2">
-        <span className="text-[9px] uppercase font-bold tracking-[1.5px] text-zinc-500 block mb-1">
+        <span className="text-[11px] uppercase font-bold tracking-[1.5px] text-zinc-500 block mb-1">
           Archetype Share
         </span>
 
         {mode === "system" ? (
           <div className="space-y-1.5">
             <div className="bg-zinc-900/25 border border-zinc-950/60 p-1.5 rounded-lg">
-              <div className="flex justify-between items-center text-[11px] mb-1">
+              <div className="flex justify-between items-center text-[13px] mb-1">
                 <span className="font-semibold text-red-400">Personal Villains</span>
                 <span className="font-bold text-red-500">{activeDecadeData.per_pct}%</span>
               </div>
@@ -66,7 +66,7 @@ export function DecadeFocus({
             </div>
 
             <div className="bg-zinc-900/25 border border-zinc-950/60 p-1.5 rounded-lg">
-              <div className="flex justify-between items-center text-[11px] mb-1">
+              <div className="flex justify-between items-center text-[13px] mb-1">
                 <span className="font-semibold text-blue-400 font-sans">Systemic Villains</span>
                 <span className="font-bold text-blue-500">{activeDecadeData.sys_pct}%</span>
               </div>
@@ -79,7 +79,7 @@ export function DecadeFocus({
             </div>
 
             <div className="bg-zinc-900/25 border border-zinc-950/60 p-1.5 rounded-lg">
-              <div className="flex justify-between items-center text-[11px] mb-1">
+              <div className="flex justify-between items-center text-[13px] mb-1">
                 <span className="font-semibold text-zinc-400">Alternative Themes</span>
                 <span className="font-bold text-zinc-400">{100 - activeDecadeData.vrate}%</span>
               </div>
@@ -100,10 +100,10 @@ export function DecadeFocus({
               return (
                 <div key={key} className="p-1.5 bg-zinc-900/20 border border-zinc-950/40 rounded-lg space-y-1">
                   <div className="flex justify-between items-baseline gap-1.5">
-                    <span className="text-[10.5px] font-semibold text-zinc-300 uppercase truncate">
+                    <span className="text-[12.5px] font-semibold text-zinc-300 uppercase truncate">
                       {label}
                     </span>
-                    <span className="text-[10.5px] font-bold font-mono" style={{ color }}>
+                    <span className="text-[12.5px] font-bold font-mono" style={{ color }}>
                       {Math.round(value)}%
                     </span>
                   </div>
@@ -121,13 +121,13 @@ export function DecadeFocus({
         )}
       </div>
 
-      <div id="p-meta" className="mt-3 pt-2.5 border-t border-zinc-900 text-[11px] text-zinc-400 space-y-1 bg-zinc-950/15 p-2 rounded-lg">
+      <div id="p-meta" className="mt-3 pt-2.5 border-t border-zinc-900 text-[13px] text-zinc-400 space-y-1 bg-zinc-950/15 p-2 rounded-lg">
         <div className="flex justify-between items-center">
-          <span className="font-semibold text-zinc-500 uppercase text-[9px]">Est. Production:</span>
+          <span className="font-semibold text-zinc-500 uppercase text-[11px]">Est. Production:</span>
           <strong className="text-white">~{activeDecadeData.real.toLocaleString()} films</strong>
         </div>
         <div className="flex justify-between items-center">
-          <span className="font-semibold text-zinc-500 uppercase text-[9px]">Sample Volume:</span>
+          <span className="font-semibold text-zinc-500 uppercase text-[11px]">Sample Volume:</span>
           <strong className="text-amber-500">{activeDecadeData.sample} analyzed</strong>
         </div>
       </div>

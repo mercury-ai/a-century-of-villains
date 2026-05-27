@@ -11,8 +11,8 @@ interface LegendProps {
 export function Legend({ keys, activeArch, categoryLabels, categoryColors, onToggle }: LegendProps) {
   return (
     <div id="leg-card" className="mt-2" onClick={(e) => e.stopPropagation()}>
-      <h3 className="text-[10px] font-bold tracking-widest text-zinc-500 uppercase mb-1.5 flex items-center gap-1">
-        <Filter className="w-3 h-3 text-amber-500" /> Color Map Legend • Tap to isolate trend
+      <h3 className="text-[12px] font-bold tracking-widest text-zinc-500 uppercase mb-1.5 flex items-center gap-1">
+        <Filter className="w-3.5 h-3.5 text-amber-500" /> Color Map Legend • Tap to isolate trend
       </h3>
 
       <div id="leg" className="flex flex-wrap gap-1">
@@ -25,7 +25,7 @@ export function Legend({ keys, activeArch, categoryLabels, categoryColors, onTog
             <button
               key={k}
               onClick={() => onToggle(k)}
-              className={`li flex items-center gap-1 px-2 py-0.5 text-[10px] font-semibold rounded border cursor-pointer transition-all duration-150 ${
+              className={`li flex items-center gap-1 px-2 py-0.5 text-[11.5px] font-semibold rounded border cursor-pointer transition-all duration-150 ${
                 isIsolated
                   ? "bg-amber-500 text-zinc-950 border-amber-500 shadow-sm font-bold"
                   : isAnyIsolated
@@ -35,14 +35,14 @@ export function Legend({ keys, activeArch, categoryLabels, categoryColors, onTog
               aria-label={`Isolate trend for ${categoryLabels[k] || k}`}
             >
               <span
-                className="w-2 h-2 rounded-full flex-shrink-0"
+                className="w-2.5 h-2.5 rounded-full flex-shrink-0"
                 style={{
                   backgroundColor: color,
                   boxShadow: isIsolated ? "none" : `0 0 5px ${color}60`
                 }}
               />
               <span>{categoryLabels[k] || k}</span>
-              {isIsolated && <Check className="w-2 h-2 ml-0.5 text-zinc-950 stroke-[3]" />}
+              {isIsolated && <Check className="w-2.5 h-2.5 ml-0.5 text-zinc-950 stroke-[3]" />}
             </button>
           );
         })}
