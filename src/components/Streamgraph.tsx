@@ -69,6 +69,7 @@ export function Streamgraph({
           height={height}
           className="block select-none overflow-hidden cursor-pointer"
           onClick={onSvgClick}
+          onMouseLeave={() => onHoverDecade(null)}
           aria-label="Proportional topographic curve depicting historical Indian villain metrics"
           role="img"
         >
@@ -258,7 +259,6 @@ export function Streamgraph({
                 fill="transparent"
                 className="cursor-pointer"
                 onMouseEnter={() => onHoverDecade(index)}
-                onMouseLeave={() => onHoverDecade(null)}
               />
             </g>
           ))}
@@ -285,7 +285,6 @@ export function Streamgraph({
                 key={`axis-${index}`}
                 className="cursor-pointer"
                 onMouseEnter={() => onHoverDecade(index)}
-                onMouseLeave={() => onHoverDecade(null)}
                 onClick={(e) => {
                   e.stopPropagation();
                   onSelectDecade(index);

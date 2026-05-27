@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, useCallback } from "react";
+import { useState, useMemo } from "react";
 import { Info } from "lucide-react";
 import { RAW, ARCHS, POWS } from "./data";
 import type { Mode } from "./lib/types";
@@ -28,26 +28,6 @@ export default function App() {
   const [selectedDecade, setSelectedDecade] = useState<number | null>(null);
   const [hoveredBandKey, setHoveredBandKey] = useState<string | null>(null);
   const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number } | null>(null);
-
-  // Debounced decade hover — prevents flicker when the mouse briefly crosses
-  // the tiny gaps between adjacent decade hot-zones.
-  const hoverClearTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const handleHoverDecade = useCallback((i: number | null) => {
-    if (i !== null) {
-      // Entering a column: cancel any pending clear and apply immediately
-      if (hoverClearTimer.current) {
-        clearTimeout(hoverClearTimer.current);
-        hoverClearTimer.current = null;
-      }
-      setHoveredDecade(i);
-    } else {
-      // Leaving a column: wait 80 ms before clearing
-      hoverClearTimer.current = setTimeout(() => {
-        setHoveredDecade(null);
-        hoverClearTimer.current = null;
-      }, 80);
-    }
-  }, []);
 
   // View toggles
   const [showAccessibleTable, setShowAccessibleTable] = useState<boolean>(false);
@@ -161,7 +141,7 @@ export default function App() {
                   hasSelection={hasSelection}
                   categoryColors={categoryColors}
                   onSvgClick={handleSvgClick}
-                  onHoverDecade={handleHoverDecade}
+                  onHoverDecade={setHoveredDecade}
                   onSelectDecade={handleSelectDecade}
                   onHoverBand={setHoveredBandKey}
                   onTooltipMove={setTooltipPos}
