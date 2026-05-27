@@ -54,7 +54,7 @@ export function useVisualBands(
     // the botfade gradient overlay.
     const innerH = height - PAD_T - PAD_B;
     const centreY = PAD_T + innerH * 0.5;
-    const yscale = maxExt > 0 ? (height * 0.44 * animProgress) / maxExt : 1;
+    const yscale = maxExt > 0 ? (height * 0.56 * animProgress) / maxExt : 1;
 
     const xs = cols.map(c => c.cx);
 
@@ -92,7 +92,7 @@ export function useSystemBands(
       RAW.forEach((d, i) => {
         const { cx } = cols[i];
         const val = d[key as "per_pct" | "sys_pct"] * animProgress;
-        const bandHeight = (val / 100) * height * 0.22;
+        const bandHeight = (val / 100) * height * 0.28;
         if (ti === 0) {
           ptsT.push({ x: cx, y: centreY - bandHeight });
           ptsB.push({ x: cx, y: centreY });
