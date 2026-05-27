@@ -33,9 +33,14 @@ export default function App() {
   const [showAccessibleTable, setShowAccessibleTable] = useState<boolean>(false);
 
   // Geometry + animation
+  // chartAreaRef measures the OUTER chart-area (stable — never shrinks when sidebar opens).
+  // containerRef measures the INNER SVG container (shrinks via padding-right when sidebar opens).
+  // Using the stable width for height keeps chart-area's height constant, which prevents
+  // the resize/mouseleave feedback loop that caused sidebar flickering near the legend.
+  const [chartAreaRef, chartAreaWidth] = useContainerWidth();
   const [containerRef, width] = useContainerWidth();
   const animProgress = useEntryAnimation();
-  const height = useMemo(() => Math.max(Math.round(width * 0.55), 460), [width]);
+  const height = useMemo(() => Math.max(Math.round(chartAreaWidth * 0.55), 460), [chartAreaWidth]);
   const innerH = height - PAD_T - PAD_B;
   const baseLine = PAD_T + innerH;
 
@@ -106,6 +111,7 @@ export default function App() {
         {/* chart-area: stable container — never resizes when sidebar opens, so mouseleave is reliable */}
         <div
           id="chart-area"
+          ref={chartAreaRef}
           className="relative"
           onMouseLeave={() => setHoveredDecade(null)}
         >
