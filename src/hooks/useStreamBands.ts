@@ -53,7 +53,7 @@ export function useVisualBands(
     // matches the original design; the ~11px bottom overflow is hidden by
     // the botfade gradient overlay.
     const innerH = height - PAD_T - PAD_B;
-    const centreY = PAD_T + innerH * 0.42;
+    const centreY = PAD_T + innerH * 0.22;
     const yscale = maxExt > 0 ? (height * 0.44 * animProgress) / maxExt : 1;
 
     const xs = cols.map(c => c.cx);
@@ -83,7 +83,7 @@ export function useSystemBands(
     if (mode !== "system") return [];
 
     const innerH = height - PAD_T - PAD_B;
-    const centreY = PAD_T + innerH * 0.42;
+    const centreY = PAD_T + innerH * 0.22;
 
     return ["per_pct", "sys_pct"].map((key, ti) => {
       const ptsT: { x: number; y: number }[] = [];
